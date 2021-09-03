@@ -1,0 +1,14 @@
+<mat-toolbar class="bg-header">
+    <ul>
+        <a *ngIf="userSvc.loggedIn()" routerLink="listPost">List Post</a>
+    </ul>
+    <ul>
+        <a *ngIf="userSvc.loggedIn()" routerLink="savePost">Create Post</a>
+    </ul>
+    <span class="headerSpacer"></span>
+    <ul>
+        <a *ngIf="!userSvc.loggedIn()" mat-button routerLink="signUp">Sign Up</a>
+        <a *ngIf="!userSvc.loggedIn()" mat-button routerLink="login">Login</a>
+        <a *ngIf="userSvc.loggedIn()" (click)="userSvc.logout()" mat-button>Logout</a>
+    </ul>
+</mat-toolbar>

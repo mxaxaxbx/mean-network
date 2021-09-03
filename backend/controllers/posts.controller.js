@@ -55,4 +55,12 @@ const list = async(req, res) => {
     return res.status(200).send({ data: posts });
 }
 
-module.exports = { create, list };
+const postsByStatus = async(req, res) => {
+    const posts = await postModel.find({
+        status_id: req.params['status_id'],
+        user_id: req.user._id
+    });
+    return res.status(200).send({ data: posts });
+}
+
+module.exports = { create, list, postsByStatus };

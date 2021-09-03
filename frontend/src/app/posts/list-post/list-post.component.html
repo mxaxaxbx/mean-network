@@ -1,0 +1,15 @@
+<mat-expansion-panel style="margin: 20px" *ngFor="let status of statuses" (click)="getPosts(status._id)">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <mat-icon (click)="deleteStatus(status._id)">delete</mat-icon>
+            {{status.name}}
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <hr>
+    <div *ngFor="let post of status.posts">
+        <h3> <b> {{post.title}} </b> </h3>
+        <p>{{post.text}}</p>
+        <hr>
+        <br><br>
+    </div>
+</mat-expansion-panel>

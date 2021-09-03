@@ -1,0 +1,53 @@
+<div class="bg-component">
+    <div class="form"> 
+        <mat-card class="card">
+            <mat-card-title>Crear post</mat-card-title>
+            <mat-card-content>
+                <div class="container">
+                    <mat-form-field>
+                        <input 
+                            [(ngModel)]="post.title"
+                            type="title"
+                            matInput                        
+                            placeholder="Title"
+                            required
+                        /> 
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Estado</mat-label>
+                        <input
+                            type="text"
+                            placeholder="Ingrese un estado"
+                            aria-label="Number"
+                            matInput
+                            [formControl]="formCtrl"
+                            [matAutocomplete]="auto"
+                            [(ngModel)]="status"
+                        />
+
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+                                {{option.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Texto</mat-label>
+                        <textarea matInput placeholder="" [(ngModel)]="post.text"></textarea>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            
+            <mat-card-actions>
+                <button (click)="save()"
+                    class="button colorButton"
+                    mat-raised-button
+                >
+                    Guardar
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div> 
+</div>

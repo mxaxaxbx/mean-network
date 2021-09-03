@@ -1,7 +1,7 @@
 const express   = require('express');
 const router    = express.Router();
 // controller
-const { create, list } = require('../controllers/posts.controller');
+const { create, list, postsByStatus } = require('../controllers/posts.controller');
 // middleware
 const auth         = require('../middleware/auth');
 const validateUser = require('../middleware/validateUser');
@@ -13,5 +13,8 @@ router.post('/create', auth, validateUser, create);
 
 console.log('[GET] /list ');
 router.get('/list', auth, validateUser, list);
+
+console.log('[GET] /list/status/:status_id');
+router.get('/list/status/:status_id', auth, validateUser, postsByStatus);
 
 module.exports = router;
